@@ -1,5 +1,6 @@
 package com.cs407.lab2
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -25,7 +26,14 @@ class MainActivity : AppCompatActivity() {
         val submitButton = findViewById<Button>(R.id.submitButton)
         submitButton.setOnClickListener {
             val userInput = editText.text.toString()
-            Toast. makeText( this, userInput, Toast. LENGTH_SHORT) .show()
+            Toast.makeText(this, userInput, Toast.LENGTH_SHORT).show()
+
+            //Create an intent to navigate to CalculatorActivity
+            val intent = Intent(this, CalculatorActivity::class.java)
+            //pass the user input to the new activity
+            intent.putExtra("EXTRA_MESSAGE", userInput)
+            //Start the new activity
+            startActivity(intent)
         }
     }
 
